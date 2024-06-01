@@ -34,8 +34,9 @@ We can also upload the files directly to the 3rd party service. </li>
     - `utils`: contains utilities like video/file uploading etc.
     - `models`: contains the models of data
     - `middlewares`: contains the scripts that run in between the whole functionality
-
-
+7. Install Prettier using NPM: as we are working in a team, it happens sometimes that one developer has added semicolons and the other has not. This creates conflicts and needs to be resolved. For this purpose, we will install prettier and add a few files mentioned below:
+    - `.prettierrc`: contains the configuration of prettier
+    - `.prettierignore`: contains the files that need to be ignored by prettier
 
 
 
