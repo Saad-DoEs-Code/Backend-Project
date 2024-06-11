@@ -15,29 +15,43 @@ We can also upload the files directly to the 3rd party service. </li>
 <br><br>
 <b>Ignoring Files: </b> We can ignore the files that we don't want to track by using <b>.gitignore</b>. There are also git ignore generators that help us in writing the code for the files that needs to be ignored. </ul> </li>
 
+## Steps
 
-## Steps 
 ### Setting Project Up
 
 1. Create a new project and initialize git.
 2. Add public and temp folder to manage public data (images, videos, pdf etc).
-3. Add .gitkeep file to keep the temp folder and .gitignore to ignore the node_modules folder. 
+3. Add .gitkeep file to keep the temp folder and .gitignore to ignore the node_modules folder.
 4. Add src folder and create app.js, index.js and constants.js files.
 5. Change the project type to "module" and install nodemon to keep server running. Also make changes to the package.json file as follows: <br>
-`"scripts": {
+   `"scripts": {
     "dev":"nodemon src/index.js"
   }, `
 6. Add the following folders inside src folder:
-    - `controllers`: contains data logic and functionality
-    - `db`: contains the script for connection to db
-    - `routes`: contains URL routes of the application
-    - `utils`: contains utilities like video/file uploading etc.
-    - `models`: contains the models of data
-    - `middlewares`: contains the scripts that run in between the whole functionality
+   - `controllers`: contains data logic and functionality
+   - `db`: contains the script for connection to db
+   - `routes`: contains URL routes of the application
+   - `utils`: contains utilities like video/file uploading etc.
+   - `models`: contains the models of data
+   - `middlewares`: contains the scripts that run in between the whole functionality
 7. Install Prettier using NPM: as we are working in a team, it happens sometimes that one developer has added semicolons and the other has not. This creates conflicts and needs to be resolved. For this purpose, we will install prettier and add a few files mentioned below:
-    - `.prettierrc`: contains the configuration of prettier
-    - `.prettierignore`: contains the files that need to be ignored by prettier
+   - `.prettierrc`: contains the configuration of prettier
+   - `.prettierignore`: contains the files that need to be ignored by prettier
 
+### Connecting Database
 
+1. Set up Mongo DB Atlas and connect it with Mongo DB Compass using Connection String.
+2. Inside .env, create MONGODB_URI variable and PORT variables. Pass each variable its value. Remember to remove the last slash in the connection string.
+3. Set up the DB_NAME Variable inside constants.js. Since its not a system specific variable, we will not place it in the .env file.
+4. Remember these rules for the Database:
 
-
+    - To manage errors, wrap the code inside `try catch` or `promises`
+    - Database is always in another continent. i.e. It will take some time to be saved and retreived. Therefore, try using `async await` for parallel distribution.
+5. We will connect the Database in `index.js` using either of the following approaches:
+  
+    - <b>Fisrt Approach:</b> <br>
+    i. Write the connection code in a seaparate file within a function. <br>
+    ii. Call this function in `index.js`.
+    - <b>Second Approach:</b> <br>
+    i. Create an `index.js` file inside `src/db` folder.
+    
