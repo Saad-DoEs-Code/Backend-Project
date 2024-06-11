@@ -53,5 +53,9 @@ We can also upload the files directly to the 3rd party service. </li>
     i. Write the connection code in a seaparate file within a function. <br>
     ii. Call this function in `index.js`.
     - <b>Second Approach:</b> <br>
-    i. Create an `index.js` file inside `src/db` folder.
+    i. Create an `index.js` file inside `src/db` folder. <br>
+    ii. Write the connection code in this file into a single function. <br>
+    iii. Import this file in `index.js` of `src` folder and call that function.<br>
+    iv. Also configure `dotenv` while maintaining the code consistency and update the `package.json` file as required.
+
     
