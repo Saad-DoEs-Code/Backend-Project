@@ -59,3 +59,19 @@ We can also upload the files directly to the 3rd party service. </li>
     iv. Also configure `dotenv` while maintaining the code consistency and update the `package.json` file as required.
 
     
+### Custom API Response and Error Handling
+1. Create an Express App in `app.js`.
+2. Since we have written the `connectDB` function using `async`, it would return a promise. Therefore, we will handle errors using `connectDB().then().catch()` methods.
+      - Inside `.then()`, we will listen to the `app` while inside `.catch()`, we will handle/display the errors.
+3. Install `cors` and `cookie-parser`. Configure both of them inside `app.js`. These are the two <b>Middlewares</b>, to help us with various things.
+4. Configure the middlewares for various purposes inside `app.js`.
+      - Configure JSON Data Response by limiting it using `express.json()`.
+      - Configure URL Encoded Data Response by limiting it using `express.urlencoded()`.
+      - Configure storage for the static assets (PDF, Images etc) using `express.static()`.
+
+#### Middleware
+5. Middleware are used to check data while managing `requests` and `response`. For example: if we are serving on an ecommerce website and the user places an order, we must ensure that the user is logged in. This duty will be done by a Middleware. We may also use multiple Middlewares, one after another.
+      - For Example: First check if the user is Logged In and later checking if the user is Admin.
+      - These multiple Middlewares are made/arranged in a sequence and uses `next` flag in `(err, req, res, next)` to let the next middleware know that the Task Has Been Done.
+
+#### Utilities

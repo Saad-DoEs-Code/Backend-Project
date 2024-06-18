@@ -2,14 +2,27 @@ import dotenv from "dotenv";
 import connectDB from "./db/index.js";
 
 dotenv.config({
-    path:"./env"
+  path: "./env",
 });
 
-connectDB();
-
-
-
-
+connectDB()
+  .then(() => {
+    try {
+      // If no errors, listen to the app
+      app.listen(process.env.PORT || 8000, () => {
+        console.log(`Server is running on port ${process.env.PORT || 8000}`);
+      });
+    } catch (error) {
+      // Checking for Errors before Starting the App
+      app.on("error", (error) => {
+        console.log("Error: ", error);
+        throw error;
+      });
+    }
+  })
+  .catch((err) => {
+    console.log(`DB Connection Failed: ${err}`);
+  });
 
 /*
 1. This is approach number 1, but we don't want our index.js to get polluted.
